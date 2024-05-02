@@ -22,6 +22,7 @@ export default function Referral({
   );
 }
 
+
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { refCode } = context.query;
 
