@@ -11,7 +11,7 @@ export default function ShareJuraganPage({
   redirectUrl,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   useEffect(() => {
-    window.location.href = redirectUrl
+    window.location.href = redirectUrl;
   }, [redirectUrl]);
   return (
     <div>
@@ -28,7 +28,7 @@ export default function ShareJuraganPage({
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { refCode } = context.query;
   const settingData = await getShareSettingByType(ReferralType.JURAGAN);
-  if (settingData && refCode && refCode === "string") {
+  if (settingData && refCode && typeof refCode === "string") {
     const parseTitle = settingData.og_title.replace(/{code}/g, refCode);
     const parseDesc = settingData.og_description.replace(/{code}/g, refCode);
     return {
